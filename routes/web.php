@@ -45,8 +45,6 @@ Route::group(
             Route::resource('users', UserController::class);
             Route::post('sendemail', [UserController::class,'sendEmail'])->name('users.sendemail');
             Route::resource('settings', SettingController::class);
-            Route::resource('galleries', GalleryController::class);
-            Route::post('image/upload/{folder}',ImageController::class);
 
 
             // ////////////////////////////////////////
