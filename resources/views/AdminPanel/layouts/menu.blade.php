@@ -12,7 +12,7 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-element-11 fs-2">
+                            <i class="fa-solid fa-house fa-2xl"></i>
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
@@ -82,9 +82,6 @@
                                 <!--end:Menu link-->
                             </div>
                         @endif
-
-
-
                         @if (auth()->user()->can('View Messages'))
                         <div class="menu-item">
                             <!--begin:Menu link-->
@@ -97,9 +94,6 @@
                             <!--end:Menu link-->
                         </div>
                         @endif
-
-
-
                     </div>
                     <!--end:Menu sub-->
                 </div>

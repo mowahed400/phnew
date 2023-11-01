@@ -33,8 +33,7 @@ License: For each use you must have a valid license purchased only from above li
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
 
-    <link rel="shortcut icon" href="{{ \App\Models\Setting::first()->logo }}" />
-    <!--begin::Fonts(mandatory for all pages)-->
+    <i class="fa-solid fa-house fa-2xl"></i>    <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" />
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
             integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -120,7 +119,7 @@ License: For each use you must have a valid license purchased only from above li
                     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
                         <!--begin::Logo image-->
                         <a href="{{ route('dashboard') }}">
-                            <img alt="Logo" src="{{\App\Models\Setting::first()->logo}}"
+                                <img alt="Logo" src="{{\App\Models\Setting::first()->logo}}"
                                 class="h-75px w-150px app-sidebar-logo-default" />
                         </a>
                         <!--end::Logo image-->

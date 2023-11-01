@@ -13,11 +13,7 @@
     </div>
     <!--end::Sidebar mobile toggle-->
     <!--begin::Mobile logo-->
-    <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-        <a href="{{ route('dashboard') }}" class="d-lg-none">
-            <img alt="Logo" src="{{\App\Models\Setting::first()->logo}}" class="h-75px w-150px" />
-        </a>
-    </div>
+
     <!--end::Mobile logo-->
     <!--begin::Header wrapper-->
     <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1" id="kt_app_header_wrapper">
@@ -43,7 +39,7 @@
                 <!--begin::Menu wrapper-->
                 <div class="cursor-pointer symbol symbol-35px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                     data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                    <img src="{{ asset('admin.avif') }}" class="rounded-3" alt="user" />
+                    <i class="fa-solid fa-gear fa-4xl"></i>
                 </div>
                 <!--begin::User account menu-->
                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
@@ -53,7 +49,7 @@
                         <div class="menu-content d-flex align-items-center px-3">
                             <!--begin::Avatar-->
                             <div class="symbol symbol-50px me-5">
-                                <img alt="Logo" src="{{ asset('admin.avif') }}" />
+                                <i class="fa-solid fa-user"></i>
                             </div>
                             <!--end::Avatar-->
                             <!--begin::Username-->
