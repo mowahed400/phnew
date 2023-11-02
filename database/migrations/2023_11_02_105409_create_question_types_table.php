@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('setting_translations', function (Blueprint $table) {
+        Schema::create('question_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('settings_id');
-            $table->string('locale');
-            $table->longText('footer_description');
+            $table->boolean('is_active')->default(0);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setting_translations');
+        Schema::dropIfExists('question_types');
     }
 };

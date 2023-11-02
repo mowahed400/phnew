@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('setting_translations', function (Blueprint $table) {
+        Schema::create('supervisors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('settings_id');
-            $table->string('locale');
-            $table->longText('footer_description');
+            $table->boolean('is_active')->default(0);
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('mobile')->nullable();
+            $table->string('password')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setting_translations');
+        Schema::dropIfExists('supervisors');
     }
 };
