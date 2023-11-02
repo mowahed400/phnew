@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('status')->default(0);
             $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnDelete();
-            $table->foreignId('supervisor_id')->constrained('supervisors')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamp('date')->nullable();
             $table->timestamps();
         });
