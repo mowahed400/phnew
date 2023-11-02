@@ -8,8 +8,10 @@ use EngMahmoudElgml\Super\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -17,11 +19,11 @@ class AuthController extends Controller
     {
         $credentials = $request->only(['email', 'password']);
 
-        \JWTAuth::factory()->setTTL(500);
-        $token = \Auth::guard('user')->attempt($credentials);
+        JWTAuth::factory()->setTTL(500);
+        $token = Auth::guard('user')->attempt($credentials);
         if ($token)
         {
-            $user  = \Auth::guard('user')->user();
+            $user  = Auth::guard('user')->user();
             return Response::defaultResponse(false, 200, [],'Welcome', $user , $token );
         }
         else {
@@ -86,7 +88,7 @@ class AuthController extends Controller
             return response()->json(["message" => __('lang.userNotFound')], 404);
         }
 
-        $details = (rand(1, 1000000));
+        $details = (rand(10000, 99999));
 
         Mail::to($request->email)->send(new \App\Mail\ForgetPassword($details));
 
