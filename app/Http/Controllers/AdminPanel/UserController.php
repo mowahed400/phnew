@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
@@ -23,16 +24,23 @@ class UserController extends Controller
         return view('AdminPanel.users.index',get_defined_vars());
     }
 
-    // public function create()
-    // {
-    //     //
-    // }
+    public function create()
+    {
+        $roles = Role::where('id', '!=', 1)->get();
+        return view('AdminPanel.users.create', get_defined_vars());
+    }
 
 
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
+    public function store(Request $request)
+    {
+        try {
+             User::create($request->input());
+
+            return redirect()->route('users.index')->with('success', __('lang.created'));
+        } catch (\Exception $ex) {
+            return redirect()->back()->with('warning', __('lang.warning'));
+        }
+    }
 
 
     // public function show($id)
@@ -50,16 +58,30 @@ class UserController extends Controller
     }
 
 
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
+    public function update(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+
+            $request['password'] = $request->password ?? $user->password;
+            $user->update($request->input());
+
+            return redirect()->route('users.index')->with('success', __('lang.updated'));
+        } catch (\Exception $ex) {
+            return redirect()->back()->with('warning', __('lang.warning'));
+        }
+    }
 
 
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+    public function destroy($id)
+    {
+        if ($id != 1) {
+            User::findOrFail($id)->delete();
+            return redirect()->back()->with('error_message', __('lang.deleted'));
+        } else {
+            return redirect()->back()->with('warning', __('lang.warning'));
+        }
+    }
 
     public function sendEmail(Request $request){
         $request->validate([

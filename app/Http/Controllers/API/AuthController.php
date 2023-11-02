@@ -26,10 +26,10 @@ class AuthController extends Controller
         if($validator->fails()){
             return response()->json(['errors'=>$validator->errors()],422);
         }
-        $code = (rand(1, 1000000));
-        $request['code'] = $code;
-        $user = User::create($request->input());
-        Mail::to($request->email)->send(new \App\Mail\UserVerify($code));
+        // $code = (rand(1, 1000000));
+        // $request['code'] = $code;
+        // $user = User::create($request->input());
+        // Mail::to($request->email)->send(new \App\Mail\UserVerify($code));
         return response()->json(['message'=>__('lang.userCreated')],200);
     }
 

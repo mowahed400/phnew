@@ -51,10 +51,10 @@
         <div id="kt_account_settings_profile_details" class="collapse show">
             <!--begin::Form-->
             <form id="kt_account_profile_details_form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                novalidate="novalidate" enctype="multipart/form-data" action="{{ route('admins.update', $admin->id) }}"
+                novalidate="novalidate" enctype="multipart/form-data" action="{{ route('users.update', $user->id) }}"
                 method="POST">
                 <!--begin::Card body-->
-                @include('AdminPanel.admins.fields')
+                @include('AdminPanel.users.fields')
                 <!--end::Card body-->
         </div>
         <!--begin::Actions-->

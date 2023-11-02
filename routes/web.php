@@ -40,6 +40,7 @@ Route::group(
 
             Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
             Route::resource('admins', AdminController::class);
+            Route::resource('users', UserController::class);
             Route::resource('role', RoleController::class);
             Route::resource('permessions', PermessionController::class);
             Route::resource('users', UserController::class);
