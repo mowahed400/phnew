@@ -7,7 +7,7 @@
             <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                 <!--begin::Title-->
                 <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                    {{ __('lang.coupons') }}</h1>
+                    {{ __('lang.users') }}</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -51,10 +51,9 @@
         <div id="kt_account_settings_profile_details" class="collapse show">
             <!--begin::Form-->
             <form id="kt_account_profile_details_form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                novalidate="novalidate" enctype="multipart/form-data" action="{{ route('coupons.store') }}"
-                method="POST">
+                novalidate="novalidate" enctype="multipart/form-data" action="{{ route('users.store') }}" method="POST">
                 <!--begin::Card body-->
-                @include('AdminPanel.coupones.fields')
+                @include('AdminPanel.users.fields')
                 <!--end::Card body-->
         </div>
         <!--begin::Actions-->

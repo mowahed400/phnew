@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Auth\LoginRequest;
+use EngMahmoudElgml\Super\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
@@ -11,63 +13,20 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-    public function SignUp(Request $request){
-        $validator = Validator::make($request->all(),
-            User::$rules,
-            [
-                'required' => trans('validation.required'),
-                'string' => trans('validation.string'),
-                'email' => trans('validation.email'),
-                'unique' => trans('validation.unique'),
-                'same' => trans('validation.same')
-            ]
-        );
-
-        if($validator->fails()){
-            return response()->json(['errors'=>$validator->errors()],422);
-        }
-        $code = (rand(1, 1000000));
-        $request['code'] = $code;
-        $user = User::create($request->input());
-        Mail::to($request->email)->send(new \App\Mail\UserVerify($code));
-        return response()->json(['message'=>__('lang.userCreated')],200);
-    }
-
-    public function verify(Request $request)
+    public function Login(LoginRequest $request)
     {
-        $validatore = Validator::make(
-            $request->all(),
-            [
-                'email' => 'required|email|exists:users,email',
-                'code' => 'required'
-            ],
-            [
-                'required' => __('validation.required'),
-                'email' => __('validation.email'),
-                'exists' => __('validation.exists'),
-            ]
-        );
-        if ($validatore->fails()) {
-            return response()->json(['errors' => $validatore->errors()], 422);
-        }
-        $user = User::where('email', $request->email)->first();
-        if ($user->code != $request->code) {
-            return response()->json(['message' => __('lang.invalidcode')], 422);
-        }
-        $user->email_verified_at = today();
-        $user->save();
-        return response()->json(['message' => __('lang.verified')], 200);
-    }
-    public function Login()
-    {
-        $credentials = request(['email', 'password']);
-        $credentials['status'] = 1;
+        $credentials = $request->only(['email', 'password']);
 
-        if (!$token = auth('user')->attempt($credentials)) {
-            return response()->json(['errors' => __('lang.wrongCredentials')], 422);
+        \JWTAuth::factory()->setTTL(500);
+        $token = \Auth::guard('user')->attempt($credentials);
+        if ($token)
+        {
+            $user  = \Auth::guard('user')->user();
+            return Response::defaultResponse(false, 200, [],'Welcome', $user , $token );
         }
-
-        return $this->respondWithToken($token);
+        else {
+            return Response::defaultResponse(false, 401, [],'Invalid credentials', new \stdClass());
+        }
     }
     protected function respondWithToken($token)
     {

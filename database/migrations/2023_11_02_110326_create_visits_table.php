@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('status')->default(0);
+            $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnDelete();
+            $table->foreignId('supervisor_id')->constrained('supervisors')->cascadeOnDelete();
+            $table->timestamp('date')->nullable();
             $table->timestamps();
         });
     }

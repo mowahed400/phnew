@@ -70,7 +70,7 @@
 
                                 <!--end:Menu item-->
                                 <!--end:Menu item-->
-                        @if (auth()->user()->can('View User'))
+                       {{-- @if (auth()->user()->can('View User'))--}}
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link active" href="{{ route('users.index') }}">
@@ -81,7 +81,7 @@
                                 </a>
                                 <!--end:Menu link-->
                             </div>
-                        @endif
+                        {{--@endif--}}
 
                     </div>
                     <!--end:Menu sub-->

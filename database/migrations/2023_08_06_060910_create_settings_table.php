@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('app_name');
-            $table->text('logo');
-            $table->text('footer_logo');
-            $table->text('location');
-            $table->integer('points_price');
+            $table->text('app_name')->nullable();
+            $table->text('logo')->nullable();
+            $table->text('footer_logo')->nullable();
+            $table->text('location')->nullable();
+            $table->integer('points_price')->nullable();
             $table->timestamps();
         });
     }

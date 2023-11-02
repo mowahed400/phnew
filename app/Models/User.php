@@ -18,14 +18,11 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'country_id',
         'email_verified_at',
         'code',
         'reset_code',
-        'points'
     ];
 
-    protected $appends = ['statustype'];
 
    static $rules = [
         'name' => 'required|string|unique:users,name',
@@ -58,18 +55,4 @@ class User extends Authenticatable implements JWTSubject
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function getStatustypeAttribute()
-    {
-        return $this->attributes['status'] == 1? __('lang.active') : __('lang.inactive');
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(\App\Models\Country::class);
-    }
-
-    public function reservation()
-    {
-        return $this->hasOne(\App\Models\Reservation::class);
-    }
 }

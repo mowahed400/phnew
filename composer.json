@@ -3,6 +3,12 @@
     "type": "project",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/EngMahmoudElgml/Super.git"
+        }
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
@@ -22,7 +28,8 @@
         "laravelcollective/html": "^6.4",
         "mcamara/laravel-localization": "^1.8",
         "spatie/laravel-permission": "^5.10",
-        "tymon/jwt-auth": "^2.0"
+        "tymon/jwt-auth": "^2.0",
+        "eng-mahmoud-elgml/super": "^1.2.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

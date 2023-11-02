@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\SettingController;
 use App\Http\Controllers\API\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -20,11 +22,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('homePage', [ HomeController::class , 'homePage' ] );
-// Route::post('signup',[AuthController::class,'SignUp']);
-// Route::post('verify',[AuthController::class,'verify']);
-// Route::post('login', [AuthController::class, 'Login']);
-// Route::post('forget-password', [AuthController::class, 'ForgetPassword']);
-// Route::post('confirm-code', [AuthController::class, 'ConfrimCode']);
+Route::post('signup',[AuthController::class,'SignUp']);
+Route::post('verify',[AuthController::class,'verify']);
+Route::post('login', [AuthController::class, 'Login']);
+Route::post('forget-password', [AuthController::class, 'ForgetPassword']);
+Route::post('confirm-code', [AuthController::class, 'ConfrimCode']);
 
 Route::get('settings', [SettingController::class, 'settings']);
 

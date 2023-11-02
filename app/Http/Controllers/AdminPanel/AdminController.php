@@ -21,6 +21,7 @@ class AdminController extends Controller
 
     public function index()
     {
+
         $admins = Admin::all();
         return view('AdminPanel.admins.index', get_defined_vars());
     }

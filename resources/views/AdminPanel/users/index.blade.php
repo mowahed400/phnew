@@ -29,16 +29,14 @@
             </div>
             <!--end::Page title-->
             <!--begin::Actions-->
-            {{-- @if(auth()->user()->can('Export User'))
-                <div class="d-flex align-items-center gap-2 gap-lg-3">
+            {{--@if(auth()->user()->can('Add Admin'))--}}
+            <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
-                <a href=""
-                    class="btn btn-sm fw-bold btn-primary">{{ __('lang.eportpdf') }}</a>
+                <a href="{{ route('users.create') }}" class="btn btn-sm fw-bold btn-primary">{{ __('lang.create') }}</a>
                 <!--end::Primary button-->
-                </div>
-            @endif --}}
-
+            </div>
+            {{--@endif--}}
             <!--end::Actions-->
         </div>
         <!--end::Toolbar container-->

@@ -5,10 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PageTranslation extends Model
+class Answer extends Model
 {
     use HasFactory;
-
-    protected $fillable=['title','description','seo'];
-
 }
