@@ -15,7 +15,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->increments('country_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
 

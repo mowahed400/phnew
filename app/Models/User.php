@@ -18,11 +18,9 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'country_id',
         'email_verified_at',
         'code',
         'reset_code',
-        'points'
     ];
 
     protected $appends = ['statustype'];
