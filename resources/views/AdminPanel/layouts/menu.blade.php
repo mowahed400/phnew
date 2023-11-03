@@ -38,6 +38,18 @@
                                 <!--end:Menu link-->
                             </div>
                         @endif
+                         {{-- @if (auth()->user()->can('View User'))--}}
+                         <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link active" href="{{ route('users.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">{{ __('lang.supervisors') }}</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                    {{--@endif--}}
                         @if (auth()->user()->can('View Roles'))
                             <div class="menu-item">
                                 <!--begin:Menu link-->
@@ -64,24 +76,37 @@
                                     <!--end:Menu link-->
                                 </div>
                         @endif
+                        @if (auth()->user()->hasRole('superadmin'))
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">{{ __('lang.Agent') }}</span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                        @endif
+                        @if (auth()->user()->hasRole('superadmin'))
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">{{ __('lang.Doctors') }}</span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                        @endif
 
                         <!--end:Menu item-->
 
 
                                 <!--end:Menu item-->
                                 <!--end:Menu item-->
-                       {{-- @if (auth()->user()->can('View User'))--}}
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link active" href="{{ route('users.index') }}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">{{ __('lang.users') }}</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                        {{--@endif--}}
+
 
                     </div>
                     <!--end:Menu sub-->

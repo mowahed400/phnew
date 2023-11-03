@@ -34,7 +34,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         try {
-             User::create($request->input());
+            User::create($request->input());
 
             return redirect()->route('users.index')->with('success', __('lang.created'));
         } catch (\Exception $ex) {
@@ -52,9 +52,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $user->status = ($user->status == 1)? 2:1;
-        $user->save();
-        return redirect()->route('users.index')->with('success', __('lang.updated'));
+      
+        return view('AdminPanel.users.edit', get_defined_vars());
     }
 
 

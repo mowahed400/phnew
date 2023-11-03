@@ -33,9 +33,8 @@
         <tr class="fw-6 fw-semibold text-gray-600">
             <th class="min-w-250px">{{ __('lang.name') }}</th>
             <th class="min-w-250px">{{ __('lang.email') }}</th>
-            <th class="min-w-250px">{{ __('lang.points') }}</th>
-            <th class="min-w-250px">{{ __('lang.status') }}</th>
             <th class="min-w-150px no-export">{{ __('lang.actions') }}</th>
+            <th class="min-w-250px" style="text-align:right">{{ __('lang.status') }}</th>
         </tr>
     </thead>
     <!--end::Thead-->
@@ -50,7 +49,18 @@
                     <span class=" fs-7 fw-bold">{{ $user->email }}</span>
                 </td>
                 <td>
-                    <span class=" fs-7 fw-bold">{{ $user->points }}</span>
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-light me-2">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <form method="POST" action="{{ route('users.destroy', $user->id) }}" style="display: inline">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-sm btn-danger me-2">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+
+
                 </td>
                 <td>
                     @if ($user->status == 1)
