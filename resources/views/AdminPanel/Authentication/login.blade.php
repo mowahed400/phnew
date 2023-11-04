@@ -108,7 +108,7 @@ License: For each use you must have a valid license purchased only from above li
             <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2"
                 style="background-image: url({{ \App\Models\Setting::first()->logo }})">
                 <!--begin::Content-->
-                {{-- <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
+                 <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
                     <!--begin::Logo-->
                     <a href="" class="mb-0 mb-lg-12">
                         <img alt="Logo" src="assets/media/logos/custom-1.png" class="h-60px h-lg-75px" />
@@ -120,7 +120,7 @@ License: For each use you must have a valid license purchased only from above li
                     <!--end::Image-->
 
 
-                </div> --}}
+                </div>
                 <!--end::Content-->
             </div>
             <!--end::Aside-->
