@@ -5,12 +5,11 @@ namespace App\Http\Controllers\API\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Auth\ConfirmOtpRequest;
 use App\Http\Requests\API\Auth\ForgotPasswordRequest;
+use App\Http\Requests\API\Auth\ChangePasswordRequest;
 use App\Mail\UserOtpMail;
 use App\Models\OneTimePassword;
 use App\Models\User;
 use EngMahmoudElgml\Super\Response;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -20,7 +19,7 @@ class PasswordController extends Controller
     public function forgotPassword(ForgotPasswordRequest $request)
     {
         $user = User::where('email',$request->email)->first();
-        
+
         $response = new \stdClass();
 
          if (!$user) {
@@ -50,14 +49,16 @@ class PasswordController extends Controller
             ->where('expire_at','>',now())
             ->first();
         if($otp){
-            $otp->update([
+           $otp->update([
                 'token' => Str::random(60)
             ]);
+
         $user=User::find($otp->user_id);
+
         if ($user) {
             //create user token with jwt
         $token = JWTAuth::fromUser($user);
-            return Response::defaultResponse(true, 200, [], 'User authenticated successfully',$response,$token);
+            return Response::defaultResponse(true, 200, [], 'User authenticated successfully',$otp->token,$token);
         }
         else{
             return Response::defaultResponse(false, 404, [], 'User not found',$response);
@@ -68,8 +69,9 @@ class PasswordController extends Controller
 
     }
 
-    public function changePassword()
+    public function changePassword(ChangePasswordRequest $request)
     {
+
         //Get the user from jwt token
         //validate otp token
         //update password

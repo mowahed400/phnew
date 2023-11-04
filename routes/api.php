@@ -26,16 +26,17 @@ Route::get('homePage', [ HomeController::class , 'homePage' ] );
 Route::post('signup',[AuthController::class,'SignUp']);
 Route::post('verify',[AuthController::class,'verify']);
 Route::post('login', [AuthController::class, 'Login']);
-// Route::post('forget-password', [AuthController::class, 'ForgetPassword']);
 Route::post('confirm-code', [AuthController::class, 'ConfrimCode']);
 Route::get('settings', [SettingController::class, 'settings']);
 Route::post('forgot-Password',[PasswordController::class,'forgotPassword']);
+Route::post('change-password',[PasswordController::class,'changePassword']);
 Route::post('confirm-otp',[PasswordController::class,'confirmOtp']);
 
 
 // Route::middleware(['auth:user','StatusMiddleware'])->group(function(){
 //     Route::get('profile', [AuthController::class, 'Profile']);
 //     Route::post('update-profile', [AuthController::class, 'UpdateProfile']);
+//     // Route::post('forget-password', [AuthController::class, 'ForgetPassword']);
 //     Route::get('logout', [AuthController::class, 'Logout']);
 //     Route::post('change-password', [AuthController::class, 'ChangePassword']);
 // });
