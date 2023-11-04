@@ -26,7 +26,7 @@ class AuthController extends Controller
             $user  = Auth::guard('user')->user();
             return Response::defaultResponse(false, 200, [],'Welcome', $user , $token );
         }
-        else {
+        else {                                                                                                                                      
             return Response::defaultResponse(false, 401, [],'Invalid credentials', new \stdClass());
         }
     }
