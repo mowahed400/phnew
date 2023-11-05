@@ -15,7 +15,7 @@ License: For each use you must have a valid license purchased only from above li
     }}>
 <!--begin::Head-->
 
-<head>
+<head >
     <base href="" />
     <title>{{\App\Models\Setting::first()->app_name}}</title>
     <meta charset="utf-8" />
@@ -100,10 +100,10 @@ License: For each use you must have a valid license purchased only from above li
     </script>
     <!--end::Theme mode setup on page load-->
     <!--begin::App-->
-    <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+    <div  class="d-flex flex-column flex-root app-root" id="kt_app_root">
         <!--begin::Page-->
         <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
-            <div id="kt_app_header" class="app-header" data-kt-sticky="true"
+            <div  id="kt_app_header" class="app-header" data-kt-sticky="true"
                 data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize"
                 data-kt-sticky-offset="{default: '200px', lg: '0'}" data-kt-sticky-animation="false">
                 @include('AdminPanel.layouts.header')
@@ -111,15 +111,15 @@ License: For each use you must have a valid license purchased only from above li
             <!--begin::Wrapper-->
             <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 <!--begin::Sidebar-->
-                <div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true"
+                <div  id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true"
                     data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}"
                     data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start"
                     data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
                     <!--begin::Logo-->
-                    <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
+                    <div class="app-sidebar-logo px-2" id="kt_app_sidebar_logo">
                         <!--begin::Logo image-->
                         <a href="{{ route('dashboard') }}">
-                                <img alt="Logo" src="{{\App\Models\Setting::first()->logo}}"
+                                <img alt="Logo" src="{{asset('logo.png')}}"
                                 class="h-75px w-150px app-sidebar-logo-default" />
                         </a>
                         <!--end::Logo image-->
@@ -152,7 +152,7 @@ License: For each use you must have a valid license purchased only from above li
                         {{-- <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
                         </div> --}}
                         <!--begin::Toolbar container-->
-                        <div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
+                        <div  id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
                             <div id="kt_app_content" class="app-content flex-column-fluid w-175px">
                                 @yield('content')
                             </div>
