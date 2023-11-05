@@ -31,12 +31,13 @@ Route::get('settings', [SettingController::class, 'settings']);
 Route::post('forgot-Password',[PasswordController::class,'forgotPassword']);
 Route::post('change-password',[PasswordController::class,'changePassword']);
 Route::post('confirm-otp',[PasswordController::class,'confirmOtp']);
+Route::get('logout', [AuthController::class, 'Logout']);
 
 
 // Route::middleware(['auth:user','StatusMiddleware'])->group(function(){
 //     Route::get('profile', [AuthController::class, 'Profile']);
 //     Route::post('update-profile', [AuthController::class, 'UpdateProfile']);
 //     // Route::post('forget-password', [AuthController::class, 'ForgetPassword']);
-//     Route::get('logout', [AuthController::class, 'Logout']);
+    Route::get('logout', [AuthController::class, 'Logout']);
 //     Route::post('change-password', [AuthController::class, 'ChangePassword']);
 // });

@@ -79,7 +79,7 @@
                         @if (auth()->user()->hasRole('superadmin'))
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                    <a class="menu-link active" href="{{ route('agent.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -96,6 +96,66 @@
                                             <span class="bullet bullet-dot"></span>
                                         </span>
                                         <span class="menu-title">{{ __('lang.Doctors') }}</span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                        @endif
+                        @if (auth()->user()->hasRole('superadmin'))
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">{{ __('lang.question') }}</span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                        @endif
+                        @if (auth()->user()->hasRole('superadmin'))
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">{{ __('lang.answer') }}</span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                        @endif
+                        @if (auth()->user()->hasRole('superadmin'))
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">{{ __('lang.visits') }}</span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                        @endif
+                        @if (auth()->user()->hasRole('superadmin'))
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">{{ __('lang.reports') }}</span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                        @endif
+                        @if (auth()->user()->hasRole('superadmin'))
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">{{ __('lang.message') }}</span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>

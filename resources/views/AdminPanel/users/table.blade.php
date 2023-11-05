@@ -48,6 +48,10 @@
                 <td>
                     <span class=" fs-7 fw-bold">{{ $user->email }}</span>
                 </td>
+
+                <td>
+                    <span class=" fs-7 fw-bold">{{ $user->email }}</span>
+                </td>
                 <td>
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-light me-2">
                             <i class="bi bi-pencil-square"></i>

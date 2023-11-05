@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\AdminController;
+use App\Http\Controllers\AdminPanel\AgentController;
 use App\Http\Controllers\AdminPanel\AuthController;
 use App\Http\Controllers\AdminPanel\PermessionController;
 use App\Http\Controllers\AdminPanel\RoleController;
@@ -46,6 +47,7 @@ Route::group(
             Route::resource('users', UserController::class);
             Route::post('sendemail', [UserController::class,'sendEmail'])->name('users.sendemail');
             Route::resource('settings', SettingController::class);
+            Route::resource('agent', AgentController::class);
 
 
             // ////////////////////////////////////////

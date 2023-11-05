@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'supervisors'=>'supervisors',
+    'agent'=>'Agent',
     'profile' => 'My Profile',
     'mode' => 'Mode',
     'language' => 'Language',
@@ -11,7 +13,8 @@ return [
     'home' => 'Home',
     'Agent' => 'Agent',
     'Doctors' => 'Doctors',
-    'Doctors' => 'Doctors',
+    'question' => 'question',
+    'answer' => 'answer',
     'admins' => 'Admins',
     'name' => 'Name',
     'role' => 'Roles',
@@ -151,4 +154,7 @@ return [
     'faquestion'            => 'Questions',
     'question'              => 'Question' ,
     'answer'                => 'Answer',
+    'visits'                => 'visits',
+    'reports'                => 'reports',
+    'message'                => 'message',
 ];

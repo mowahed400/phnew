@@ -10,6 +10,8 @@ use App\Mail\UserOtpMail;
 use App\Models\OneTimePassword;
 use App\Models\User;
 use EngMahmoudElgml\Super\Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -52,13 +54,12 @@ class PasswordController extends Controller
            $otp->update([
                 'token' => Str::random(60)
             ]);
-
         $user=User::find($otp->user_id);
 
         if ($user) {
             //create user token with jwt
         $token = JWTAuth::fromUser($user);
-            return Response::defaultResponse(true, 200, [], 'User authenticated successfully',$otp->token,$token);
+            return Response::defaultResponse(true, 200, [], 'User authenticated successfully',$response,$token);
         }
         else{
             return Response::defaultResponse(false, 404, [], 'User not found',$response);
@@ -72,10 +73,21 @@ class PasswordController extends Controller
     public function changePassword(ChangePasswordRequest $request)
     {
 
-        //Get the user from jwt token
-        //validate otp token
-        //update password
-        // return success message
+        $user=Auth::guard('user')->user();
+        $users=User::find($user->id);
+
+        $otp=OneTimePassword::query()->where('user_id',$user->id)->get();
+
+        if($otp){
+        $users->update([
+    'password'=>$request->password
+    ]);
+    return response()->json(["message" => __('lang.passwordChanded')], 200);
+        }
+        else{
+            return response()->json(["message" => __('lang.wrongPassword')], 404);
+        }
+
     }
 
 }

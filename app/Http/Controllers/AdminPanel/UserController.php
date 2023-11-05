@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -52,7 +53,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-      
+        $agents=Agent::all();
+
         return view('AdminPanel.users.edit', get_defined_vars());
     }
 

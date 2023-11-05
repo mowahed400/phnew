@@ -7,7 +7,7 @@
             <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                 <!--begin::Title-->
                 <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                    {{ __('lang.supervisors') }}</h1>
+                    {{ __('lang.admins') }}</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -28,38 +28,45 @@
                 <!--end::Breadcrumb-->
             </div>
             <!--end::Page title-->
-            <!--begin::Actions-->
-            {{--@if(auth()->user()->can('Add Admin'))--}}
-            <div class="d-flex align-items-center gap-2 gap-lg-3">
 
-                <!--begin::Primary button-->
-                <a href="{{ route('users.create') }}" class="btn btn-sm fw-bold btn-primary">{{ __('lang.create') }}</a>
-                <!--end::Primary button-->
-            </div>
-            {{--@endif--}}
-            <!--end::Actions-->
         </div>
         <!--end::Toolbar container-->
+
     </div>
     <!--end::Page title-->
     @include('AdminPanel.partials.errors')
-    <div class="card mb-5 mb-lg-10">
+    <div class="card mb-5 mb-xl-10">
         <!--begin::Card header-->
-        <div class="card-header">
-            <!--begin::Heading-->
-            <div class="card-title">
-                <h3>{{ __('lang.supervisors') }}</h3>
+        <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
+            data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
+            <!--begin::Card title-->
+            <div class="card-title m-0">
+                <h3 class="fw-bold m-0">{{ __('lang.edit') }}</h3>
             </div>
-            <!--end::Heading-->
+            <!--end::Card title-->
         </div>
-        <!--end::Card header-->
-        <!--begin::Card body-->
-        <div class="card-body p-0 m-10">
-            <!--begin::Table wrapper-->
-            <div class="table-responsive" id="kt_datatable">
-                @include('AdminPanel.users.table')
-            </div>
-            <!--end::Table wrapper-->
+        <!--begin::Card header-->
+
+        <!--begin::Content-->
+        <div id="kt_account_settings_profile_details" class="collapse show">
+            <!--begin::Form-->
+            <form id="kt_account_profile_details_form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
+                novalidate="novalidate" enctype="multipart/form-data" action="{{ route('agent.update', $agents->id) }}"
+                method="POST">
+                <!--begin::Card body-->
+                @include('AdminPanel.agent.fields')
+                <!--end::Card body-->
         </div>
-        <!--end::Card body-->
-    @endsection
+        <!--begin::Actions-->
+        <div class="card-footer d-flex justify-content-end py-6 px-9">
+            <button type="reset" class="btn btn-light btn-active-light-primary me-2"
+                onclick='window.history.back()'>{{ __('lang.back') }}</button>
+            <button type="submit" class="btn btn-primary"
+                id="kt_account_profile_details_submit">{{ __('lang.save') }}</button>
+        </div>
+        <!--end::Actions-->
+        </form>
+        <!--end::Form-->
+    </div>
+    <!--end::Content-->
+@endsection

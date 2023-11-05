@@ -28,7 +28,7 @@ class ChangePasswordRequest extends FormRequest
     {
         return [
             'password'=>'required|min:8|same:confirm-password',
-            'UpdatedToken'=>'required'
+
         ];
     }
     public function failedValidation(Validator $validator){

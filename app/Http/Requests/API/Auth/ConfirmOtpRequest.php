@@ -32,7 +32,6 @@ class ConfirmOtpRequest extends FormRequest
             'token' => 'required',
         ];
     }
-
     public function failedValidation(Validator $validator){
         $response = new \stdClass();
         throw new HttpResponseException(
