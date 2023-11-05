@@ -68,6 +68,7 @@ License: For each use you must have a valid license purchased only from above li
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
     <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <!--end::Head-->
