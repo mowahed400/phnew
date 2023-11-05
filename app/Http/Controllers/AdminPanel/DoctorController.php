@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateAgentRequest;
+use App\Http\Requests\CreateDoctorRequest;
 use App\Models\Agent;
-use App\Models\User;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 
-class AgentController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,10 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $agents=Agent::with('user')->get();
+        $doctors=Doctor::with('agent')->get();
 
-        return view('AdminPanel.Agent.index',get_defined_vars());
+        return view('AdminPanel.Doctors.index',get_defined_vars());
+
     }
 
     /**
@@ -28,8 +29,8 @@ class AgentController extends Controller
      */
     public function create()
     {
-        $users=User::all();
-        return view('AdminPanel.Agent.create', get_defined_vars());
+        $agents=Agent::all();
+        return view('AdminPanel.doctors.create',get_defined_vars());
     }
 
     /**
@@ -38,16 +39,15 @@ class AgentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateAgentRequest $request)
+    public function store(CreateDoctorRequest $request)
     {
         try {
-            Agent::create($request->input());
+            Doctor::create($request->input());
 
             return redirect()->back()->with('success', __('lang.created'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('warning', __('lang.warning'));
         }
-
     }
 
     /**
@@ -56,6 +56,10 @@ class AgentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -65,11 +69,10 @@ class AgentController extends Controller
      */
     public function edit($id)
     {
-        $users=User::all();
-        $agents=Agent::find($id);
 
-        return view('AdminPanel.Agent.edit', get_defined_vars());
-
+        $doctors=Doctor::find($id);
+        $agents=Agent::all();
+        return view('AdminPanel.doctors.edit', get_defined_vars());
     }
 
     /**
@@ -79,16 +82,16 @@ class AgentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateAgentRequest $request, $id)
+    public function update(CreateDoctorRequest $request, $id)
     {
         try{
-            $user = Agent::findOrFail($id);
-            $user->update($request->input());
-            return redirect()->route('agent.index')->with('success', __('lang.updated'));
-        }
-        catch(\Exception $ex){
-            return redirect()->back()->with('warning', __('lang.warning'));
-        }
+        $doctors=Doctor::findorfail($id);
+        $doctors->update($request->inpute());
+        return redirect()->route('agent.index')->with('success', __('lang.updated'));
+    }
+    catch(\Exception $ex){
+        return redirect()->back()->with('warning', __('lang.warning'));
+    }
     }
 
     /**
@@ -99,7 +102,9 @@ class AgentController extends Controller
      */
     public function destroy($id)
     {
-        Agent::findOrFail($id)->delete();
+        $doctors=Doctor::findorfail($id);
+        $doctors->delete();
         return redirect()->back()->with('error_message', __('lang.deleted'));
+
     }
 }

@@ -2,6 +2,7 @@
 
 return [
     'supervisors'=>'supervisors',
+    'doctor'=>'Doctor',
     'agent'=>'Agent',
     'profile' => 'My Profile',
     'mode' => 'Mode',
