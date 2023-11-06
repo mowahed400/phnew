@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\AdminPanel;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateDoctorRequest;
-use App\Models\Agent;
-use App\Models\Doctor;
-use Illuminate\Http\Request;
 
-class DoctorController extends Controller
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateQuestionRequest;
+use App\Models\Question;
+use App\Models\QuestionType;
+use Illuminate\Http\Request;
+use Mockery\Exception;
+
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +18,10 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $doctors=Doctor::with('agent')->get();
 
-        return view('AdminPanel.Doctors.index',get_defined_vars());
+        $question=Question::with('questionType')->get();
+
+        return view('AdminPanel.question.index',get_defined_vars());
 
     }
 
@@ -29,7 +32,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        $agents=Agent::all();
+        $questionType=QuestionType::all();
         return view('AdminPanel.doctors.create',get_defined_vars());
     }
 
@@ -39,10 +42,10 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateDoctorRequest $request)
+    public function store(CreateQuestionRequest $request)
     {
         try {
-            Doctor::create($request->input());
+             Question::create($request->input());
 
             return redirect()->back()->with('success', __('lang.created'));
         } catch (\Exception $ex) {
@@ -57,6 +60,7 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -65,10 +69,10 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
+        $question=Question::find($id);
+        $questionType=QuestionType::all();
+        return view('AdminPanel.question.edit', get_defined_vars());
 
-        $doctors=Doctor::find($id);
-        $agents=Agent::all();
-        return view('AdminPanel.doctors.edit', get_defined_vars());
     }
 
     /**
@@ -78,16 +82,17 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateDoctorRequest $request, $id)
+    public function update(CreateQuestionRequest $request, $id)
     {
         try{
-        $doctors=Doctor::findorfail($id);
-        $doctors->update($request->inpute());
-        return redirect()->route('agent.index')->with('success', __('lang.updated'));
-    }
-    catch(\Exception $ex){
-        return redirect()->back()->with('warning', __('lang.warning'));
-    }
+            $quetion=Question::find($id);
+            $quetion->update($request->input());
+            return redirect()->route('question.index')->with('success', __('lang.updated'));
+
+        }catch (\Exception $ex){
+            return redirect()->back()->with('warning', __('lang.warning'));
+        }
+
     }
 
     /**
@@ -98,9 +103,8 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
-        $doctors=Doctor::findorfail($id);
-        $doctors->delete();
+        $question=Question::find($id);
+        $question->delete();
         return redirect()->back()->with('error_message', __('lang.deleted'));
-
     }
 }

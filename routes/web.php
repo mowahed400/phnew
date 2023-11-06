@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminPanel\AdminController;
 use App\Http\Controllers\AdminPanel\AgentController;
 use App\Http\Controllers\AdminPanel\AuthController;
 use App\Http\Controllers\AdminPanel\PermessionController;
+use App\Http\Controllers\AdminPanel\QuestionController;
 use App\Http\Controllers\AdminPanel\RoleController;
 use App\Http\Controllers\AdminPanel\SettingController;
 use App\Http\Controllers\AdminPanel\UserController;
@@ -50,6 +51,7 @@ Route::group(
             Route::resource('settings', SettingController::class);
             Route::resource('agent', AgentController::class);
             Route::resource('doctor', DoctorController::class);
+            Route::resource('question', QuestionController::class);
 
 
             // ////////////////////////////////////////

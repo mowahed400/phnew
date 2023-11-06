@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class QuestionType extends Model
 {
     use HasFactory;
+    protected $filable=[
+        'name'
+    ];
+    public function question(){
+        return $this->belongsTo(Question::class);
+    }
 }
