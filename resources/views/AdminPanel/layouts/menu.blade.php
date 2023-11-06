@@ -100,10 +100,10 @@
                                     <!--end:Menu link-->
                                 </div>
                         @endif
-                        @if (auth()->user()->hasRole('superadmin'))
+
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                    <a class="menu-link active" href="{{ route('question.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -111,19 +111,8 @@
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
-                        @endif
-                        @if (auth()->user()->hasRole('superadmin'))
-                                <div class="menu-item">
-                                    <!--begin:Menu link-->
-                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">{{ __('lang.answer') }}</span>
-                                    </a>
-                                    <!--end:Menu link-->
-                                </div>
-                        @endif
+
+
                         @if (auth()->user()->hasRole('superadmin'))
                                 <div class="menu-item">
                                     <!--begin:Menu link-->

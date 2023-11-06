@@ -14,7 +14,7 @@ class Question extends Model
         'type_id'
     ];
     public function questionType(){
-        $this->hasOne(QuestionType::class);
+        $this->hasMany(QuestionType::class);
     }
 }
 

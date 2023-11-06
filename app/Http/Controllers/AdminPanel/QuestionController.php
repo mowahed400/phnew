@@ -18,11 +18,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
-
-        $question=Question::with('questionType')->get();
+        $questions = Question::with('questionType')->get();
 
         return view('AdminPanel.question.index',get_defined_vars());
-
     }
 
     /**
@@ -33,7 +31,7 @@ class QuestionController extends Controller
     public function create()
     {
         $questionType=QuestionType::all();
-        return view('AdminPanel.doctors.create',get_defined_vars());
+        return view('AdminPanel.question.create',get_defined_vars());
     }
 
     /**
@@ -69,7 +67,7 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        $question=Question::find($id);
+        $questions=Question::find($id);
         $questionType=QuestionType::all();
         return view('AdminPanel.question.edit', get_defined_vars());
 
@@ -85,8 +83,8 @@ class QuestionController extends Controller
     public function update(CreateQuestionRequest $request, $id)
     {
         try{
-            $quetion=Question::find($id);
-            $quetion->update($request->input());
+            $quetions=Question::find($id);
+            $quetions->update($request->input());
             return redirect()->route('question.index')->with('success', __('lang.updated'));
 
         }catch (\Exception $ex){
@@ -103,8 +101,8 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        $question=Question::find($id);
-        $question->delete();
+        $questions=Question::find($id);
+        $questions->delete();
         return redirect()->back()->with('error_message', __('lang.deleted'));
     }
 }

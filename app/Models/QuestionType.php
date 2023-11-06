@@ -11,7 +11,8 @@ class QuestionType extends Model
     protected $filable=[
         'name'
     ];
-    public function question(){
-        return $this->belongsTo(Question::class);
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 }

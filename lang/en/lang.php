@@ -3,6 +3,7 @@
 return [
     'supervisors'=>'supervisors',
     'doctor'=>'Doctor',
+
     'agent'=>'Agent',
     'profile' => 'My Profile',
     'mode' => 'Mode',
@@ -10,12 +11,9 @@ return [
     'signout' => 'SignOut',
     'dashboard' => 'Dashboard',
     'admin' => 'Admin',
-    'supervisors' => 'supervisors',
     'home' => 'Home',
     'Agent' => 'Agent',
     'Doctors' => 'Doctors',
-    'question' => 'question',
-    'answer' => 'answer',
     'admins' => 'Admins',
     'name' => 'Name',
     'role' => 'Roles',

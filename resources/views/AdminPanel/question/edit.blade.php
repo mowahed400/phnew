@@ -7,7 +7,7 @@
             <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                 <!--begin::Title-->
                 <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                    {{ __('lang.doctor') }}</h1>
+                    {{ __('lang.question') }}</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -51,10 +51,10 @@
         <div id="kt_account_settings_profile_details" class="collapse show">
             <!--begin::Form-->
             <form id="kt_account_profile_details_form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                novalidate="novalidate" enctype="multipart/form-data" action="{{ route('doctor.update', $doctors->id) }}"
+                novalidate="novalidate" enctype="multipart/form-data" action="{{ route('question.update', $questions->id) }}"
                 method="POST">
                 <!--begin::Card body-->
-                @include('AdminPanel.Doctors.fields')
+                @include('AdminPanel.question.fields')
                 <!--end::Card body-->
         </div>
         <!--begin::Actions-->

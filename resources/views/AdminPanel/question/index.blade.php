@@ -7,7 +7,7 @@
             <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                 <!--begin::Title-->
                 <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                    {{ __('lang.doctor') }}</h1>
+                    {{ __('lang.question') }}</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -33,7 +33,7 @@
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
-                <a href="{{ route('doctor.create') }}" class="btn btn-sm fw-bold btn-primary">{{ __('lang.create') }}</a>
+                <a href="{{ route('question.create') }}" class="btn btn-sm fw-bold btn-primary">{{ __('lang.create') }}</a>
                 <!--end::Primary button-->
             </div>
             {{--@endif--}}
@@ -48,7 +48,7 @@
         <div class="card-header">
             <!--begin::Heading-->
             <div class="card-title">
-                <h3>{{ __('lang.doctor') }}</h3>
+                <h3>{{ __('lang.question') }}</h3>
             </div>
             <!--end::Heading-->
         </div>
@@ -57,7 +57,7 @@
         <div class="card-body p-0 m-10">
             <!--begin::Table wrapper-->
             <div class="table-responsive" id="kt_datatable">
-                @include('AdminPanel.Doctors.table')
+                @include('AdminPanel.question.table')
             </div>
             <!--end::Table wrapper-->
         </div>
