@@ -54,7 +54,7 @@
                 novalidate="novalidate" enctype="multipart/form-data" action="{{ route('question.update', $questions->id) }}"
                 method="POST">
                 <!--begin::Card body-->
-                @include('AdminPanel.question.fields')
+                @include('AdminPanel.question.fields2')
                 <!--end::Card body-->
         </div>
         <!--begin::Actions-->

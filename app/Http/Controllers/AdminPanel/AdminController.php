@@ -13,10 +13,10 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:View Admins|Add Admin|Edit Admin|Delete Admin', ['only' => ['index', 'store']]);
-        $this->middleware('permission:Add Admin', ['only' => ['create', 'store']]);
-        $this->middleware('permission:Edit Admin', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:Delete Admin', ['only' => ['destroy']]);
+//        $this->middleware('permission:View Admins|Add Admin|Edit Admin|Delete Admin', ['only' => ['index', 'store']]);
+//        $this->middleware('permission:Add Admin', ['only' => ['create', 'store']]);
+//        $this->middleware('permission:Edit Admin', ['only' => ['edit', 'update']]);
+//        $this->middleware('permission:Delete Admin', ['only' => ['destroy']]);
     }
 
     public function index()
@@ -48,9 +48,9 @@ class AdminController extends Controller
 
     public function edit($id)
     {
-        if ($id == 1 && !auth()->user()->hasRole('superadmin')) {
-            abort(404);
-        }
+//        if ($id == 1 && !auth()->user()->hasRole('superadmin')) {
+//            abort(404);
+//        }
         $roles = Role::where('id', '!=', 1)->get();
         $admin = Admin::findOrFail($id);
         return view('AdminPanel.admins.edit', get_defined_vars());
@@ -61,9 +61,9 @@ class AdminController extends Controller
     {
         try {
             $admin = Admin::findOrFail($id);
-            if ($admin->id == 1 && !auth()->user()->hasRole('superadmin')) {
-                abort(404);
-            }
+//            if ($admin->id == 1 && !auth()->user()->hasRole('superadmin')) {
+//                abort(404);
+//            }
             $request['password'] = $request->password ?? $admin->password;
             $admin->update($request->input());
             $admin->syncRoles($request->role);

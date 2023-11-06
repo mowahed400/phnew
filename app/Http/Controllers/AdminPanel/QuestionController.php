@@ -18,7 +18,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('questionType')->get();
+        $questions = Question::all();
 
         return view('AdminPanel.question.index',get_defined_vars());
     }

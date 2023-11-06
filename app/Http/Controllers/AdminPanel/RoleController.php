@@ -13,10 +13,10 @@ class RoleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:View Roles|Add Role|Edit Role|Delete Role', ['only' => ['index', 'store']]);
-        $this->middleware('permission:Add Role', ['only' => ['create', 'store']]);
-        $this->middleware('permission:Edit Role', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:Delete Role', ['only' => ['destroy']]);
+//        $this->middleware('permission:View Roles|Add Role|Edit Role|Delete Role', ['only' => ['index', 'store']]);
+//        $this->middleware('permission:Add Role', ['only' => ['create', 'store']]);
+//        $this->middleware('permission:Edit Role', ['only' => ['edit', 'update']]);
+//        $this->middleware('permission:Delete Role', ['only' => ['destroy']]);
     }
     public function index()
     {
@@ -45,9 +45,9 @@ class RoleController extends Controller
 
     public function edit($id)
     {
-        if ($id == 1 && !auth()->user()->hasRole('superadmin')) {
-            abort(404);
-        }
+//        if ($id == 1 && !auth()->user()->hasRole('superadmin')) {
+//            abort(404);
+//        }
         $permessions = Permission::all();
         $role = Role::findOrFail($id);
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
@@ -70,9 +70,9 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
-        if ($id == 1) {
-            abort(404);
-        }
+//        if ($id == 1) {
+//            abort(404);
+//        }
         $role = Role::findOrFail($id);
         $role->delete();
         return redirect('/role')->with('error_message', __('lang.deleted'));

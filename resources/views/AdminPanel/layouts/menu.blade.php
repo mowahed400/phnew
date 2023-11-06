@@ -25,7 +25,7 @@
                     <!--end:Menu link-->
                     <!--begin:Menu sub-->
                     <div class="menu-sub menu-sub-accordion">
-                        @if (auth()->user()->can('View Admins'))
+{{--                        @if (auth()->user()->can('View Admins'))--}}
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
@@ -37,7 +37,7 @@
                                 </a>
                                 <!--end:Menu link-->
                             </div>
-                        @endif
+{{--                        @endif--}}
                          {{-- @if (auth()->user()->can('View User'))--}}
                          <div class="menu-item">
                             <!--begin:Menu link-->
@@ -50,7 +50,7 @@
                             <!--end:Menu link-->
                         </div>
                     {{--@endif--}}
-                        @if (auth()->user()->can('View Roles'))
+{{--                        @if (auth()->user()->can('View Roles'))--}}
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link active" href="{{ route('role.index') }}">
@@ -61,10 +61,10 @@
                                 </a>
                                 <!--end:Menu link-->
                             </div>
-                        @endif
+{{--                        @endif--}}
                             <!--end:Menu item-->
                             <!--begin:Menu item-->
-                        @if (auth()->user()->hasRole('superadmin'))
+{{--                        @if (auth()->user()->hasRole('superadmin'))--}}
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
                                     <a class="menu-link active" href="{{ route('permessions.index') }}">
@@ -75,7 +75,7 @@
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
-                        @endif
+{{--                        @endif--}}
                         @if (auth()->user()->hasRole('superadmin'))
                                 <div class="menu-item">
                                     <!--begin:Menu link-->

@@ -22,7 +22,7 @@
         <tr class="fw-6 fw-semibold text-gray-600">
             <th class="min-w-250px">{{ __('lang.question') }}</th>
             <th class="min-w-250px">{{ __('lang.answer') }}</th>
-            <th class="min-w-250px">{{ __('lang.type') }}</th>
+{{--            <th class="min-w-250px">{{ __('lang.type') }}</th>--}}
             <th class="min-w-150px no-export">{{ __('lang.actions') }}</th>
         </tr>
     </thead>
@@ -34,11 +34,11 @@
                 <td>
                     <span class="badge badge-light-success fs-7 fw-bold">{{ $question->question }}</span>
                 </td>
+{{--                <td>--}}
+{{--                    <span class="badge badge-light-success fs-7 fw-bold">{{ $question->correct_answer }}</span>--}}
+{{--                </td>--}}
                 <td>
                     <span class="badge badge-light-success fs-7 fw-bold">{{ $question->correct_answer }}</span>
-                </td>
-                <td>
-                    <span class="badge badge-light-success fs-7 fw-bold">{{ $question->name }}</span>
                 </td>
 
 
