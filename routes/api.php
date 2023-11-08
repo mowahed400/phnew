@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AgentsController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\Api\DoctorController;
+use App\Http\Controllers\Api\QuestionTypesController;
 use App\Http\Controllers\API\SettingController;
 use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\Auth\PasswordController;
@@ -37,6 +38,8 @@ Route::get('logout', [AuthController::class, 'Logout']);
 //Route::get('index', [\App\Http\Controllers\AdminPanel\VisitController::class, 'index']);
 Route::get('agents',[AgentsController::class,'agents'])->middleware('auth:user');
 Route::get('doctors',[DoctorController::class,'getDoctorsByAgent'])->middleware('auth:user');
+Route::post('choose-Question',[QuestionTypesController::class,'question']);
+Route::get('question-types',[QuestionTypesController::class,'typeQusetion']);
 
 // Route::middleware(['auth:user','StatusMiddleware'])->group(function(){
 //     Route::get('profile', [AuthController::class, 'Profile']);
