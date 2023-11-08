@@ -28,7 +28,7 @@ class QuestionTypesController extends Controller
     {
         try {
             $questionId = $request->input('id');
-            $questions = Question::where('type_id', $questionId)->get();
+            $questions = Question::where('type_id', $questionId)->paginate(20);
 
             if ($questions->isEmpty()) {
                 return response()->json(['message' => 'No questions found for the given type ID'], 404);

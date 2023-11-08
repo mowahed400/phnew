@@ -26,25 +26,20 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('homePage', [ HomeController::class , 'homePage' ] );
-Route::post('signup',[AuthController::class,'SignUp']);
-Route::post('verify',[AuthController::class,'verify']);
+//Route::post('signup',[AuthController::class,'SignUp']);
+//Route::post('verify',[AuthController::class,'verify']);
+//Route::post('confirm-code', [AuthController::class, 'ConfrimCode']);
+//Route::get('settings', [SettingController::class, 'settings']);
+//Route::post('forgot-Password',[PasswordController::class,'forgotPassword']);
+//Route::post('change-password',[PasswordController::class,'changePassword']);
+//Route::post('confirm-otp',[PasswordController::class,'confirmOtp']);
 Route::post('login', [AuthController::class, 'Login']);
-Route::post('confirm-code', [AuthController::class, 'ConfrimCode']);
-Route::get('settings', [SettingController::class, 'settings']);
-Route::post('forgot-Password',[PasswordController::class,'forgotPassword']);
-Route::post('change-password',[PasswordController::class,'changePassword']);
-Route::post('confirm-otp',[PasswordController::class,'confirmOtp']);
 Route::get('logout', [AuthController::class, 'Logout']);
-//Route::get('index', [\App\Http\Controllers\AdminPanel\VisitController::class, 'index']);
 Route::get('agents',[AgentsController::class,'agents'])->middleware('auth:user');
+Route::get('search-agent',[AgentsController::class,'searchAgent'])->middleware('auth:user');
 Route::get('doctors',[DoctorController::class,'getDoctorsByAgent'])->middleware('auth:user');
+Route::get('search-doctors',[DoctorController::class,'searchdoctor'])->middleware('auth:user');
 Route::post('choose-Question',[QuestionTypesController::class,'question']);
 Route::get('question-types',[QuestionTypesController::class,'typeQusetion']);
 
-// Route::middleware(['auth:user','StatusMiddleware'])->group(function(){
-//     Route::get('profile', [AuthController::class, 'Profile']);
-//     Route::post('update-profile', [AuthController::class, 'UpdateProfile']);
-//     // Route::post('forget-password', [AuthController::class, 'ForgetPassword']);
-    Route::get('logout', [AuthController::class, 'Logout']);
-//     Route::post('change-password', [AuthController::class, 'ChangePassword']);
-// });
+
