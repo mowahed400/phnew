@@ -5,11 +5,10 @@ use App\Http\Controllers\AdminPanel\AgentController;
 use App\Http\Controllers\AdminPanel\AuthController;
 use App\Http\Controllers\AdminPanel\PermessionController;
 use App\Http\Controllers\AdminPanel\QuestionController;
+use App\Http\Controllers\AdminPanel\ReportsController;
 use App\Http\Controllers\AdminPanel\RoleController;
 use App\Http\Controllers\AdminPanel\SettingController;
 use App\Http\Controllers\AdminPanel\UserController;
-use App\Http\Controllers\AdminPanel\GalleryController;
-use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\AdminPanel\DoctorController;
 use App\Http\Controllers\AdminPanel\VisitController;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +53,7 @@ Route::group(
             Route::resource('doctor', DoctorController::class);
             Route::resource('question', QuestionController::class);
             Route::resource('visits', VisitController::class);
+            Route::resource('reports', ReportsController::class);
 //            Route::get('authtype',function (){
 //                $auth=auth()->user()->name;
 //                return($auth);
