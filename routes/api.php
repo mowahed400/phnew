@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\AgentsController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\DoctorController;
 use App\Http\Controllers\API\SettingController;
 use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\Auth\PasswordController;
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
@@ -32,7 +34,9 @@ Route::post('forgot-Password',[PasswordController::class,'forgotPassword']);
 Route::post('change-password',[PasswordController::class,'changePassword']);
 Route::post('confirm-otp',[PasswordController::class,'confirmOtp']);
 Route::get('logout', [AuthController::class, 'Logout']);
-
+//Route::get('index', [\App\Http\Controllers\AdminPanel\VisitController::class, 'index']);
+Route::get('agents',[AgentsController::class,'agents'])->middleware('auth:user');
+Route::get('doctors',[DoctorController::class,'getDoctorsByAgent'])->middleware('auth:user');
 
 // Route::middleware(['auth:user','StatusMiddleware'])->group(function(){
 //     Route::get('profile', [AuthController::class, 'Profile']);

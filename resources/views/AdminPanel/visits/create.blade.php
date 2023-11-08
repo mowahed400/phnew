@@ -7,7 +7,7 @@
             <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                 <!--begin::Title-->
                 <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                    {{ __('lang.question') }}</h1>
+                    {{ __('lang.doctor') }}</h1>
                 <!--end::Title-->
                 <!--begin::Breadcrumb-->
                 <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -41,7 +41,7 @@
             data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bold m-0">{{ __('lang.edit') }}</h3>
+                <h3 class="fw-bold m-0">{{ __('lang.create') }}</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -51,10 +51,9 @@
         <div id="kt_account_settings_profile_details" class="collapse show">
             <!--begin::Form-->
             <form id="kt_account_profile_details_form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
-                novalidate="novalidate" enctype="multipart/form-data" action="{{ route('question.update', $questions->id) }}"
-                method="POST">
+                novalidate="novalidate" enctype="multipart/form-data" action="{{ route('doctor.store') }}" method="POST">
                 <!--begin::Card body-->
-                @include('AdminPanel.question.fields')
+                @include('AdminPanel.Doctors.fields')
                 <!--end::Card body-->
         </div>
         <!--begin::Actions-->

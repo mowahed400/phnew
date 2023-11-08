@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->boolean('is_active')->default(0);
             $table->string('name');
-            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

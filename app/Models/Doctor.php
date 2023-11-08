@@ -17,4 +17,7 @@ class Doctor extends Model
     public function agent(){
         return $this->belongsTo(Agent::class);
     }
+    public function visit() {
+        return $this->hasMany(Visit::class);
+    }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->tinyInteger('status')->default(0);
             $table->foreignId('doctor_id')->constrained('doctors')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('agent_id')->constrained('agents')->cascadeOnDelete();
             $table->timestamp('date')->nullable();
             $table->timestamps();
         });

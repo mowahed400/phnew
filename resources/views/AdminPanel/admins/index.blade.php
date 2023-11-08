@@ -29,14 +29,14 @@
             </div>
             <!--end::Page title-->
             <!--begin::Actions-->
-            @if(auth()->user()->can('Add Admin'))
+
             <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 <!--begin::Primary button-->
                 <a href="{{ route('admins.create') }}" class="btn btn-sm fw-bold btn-primary">{{ __('lang.create') }}</a>
                 <!--end::Primary button-->
             </div>
-            @endif
+           
             <!--end::Actions-->
         </div>
         <!--end::Toolbar container-->

@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminPanel\UserController;
 use App\Http\Controllers\AdminPanel\GalleryController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\AdminPanel\DoctorController;
+use App\Http\Controllers\AdminPanel\VisitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,9 +53,12 @@ Route::group(
             Route::resource('agent', AgentController::class);
             Route::resource('doctor', DoctorController::class);
             Route::resource('question', QuestionController::class);
+            Route::resource('visits', VisitController::class);
+//            Route::get('authtype',function (){
+//                $auth=auth()->user()->name;
+//                return($auth);
+//            });
 
-
-            // ////////////////////////////////////////
 
 
 

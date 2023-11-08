@@ -19,4 +19,7 @@ class Agent extends Model
     public function doctor(){
         return $this->hasMany(doctor::class);
     }
+    public function visits() {
+        return $this->hasMany(Visit::class);
+    }
 }

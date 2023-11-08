@@ -116,7 +116,7 @@
                         @if (auth()->user()->hasRole('superadmin'))
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link active" href="{{ route('permessions.index') }}">
+                                    <a class="menu-link active" href="{{ route('visits.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>

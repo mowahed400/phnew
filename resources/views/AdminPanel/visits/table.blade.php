@@ -20,33 +20,36 @@
     <!--begin::Thead-->
     <thead>
         <tr class="fw-6 fw-semibold text-gray-600">
-            <th class="min-w-250px">{{ __('lang.question') }}</th>
-            <th class="min-w-250px">{{ __('lang.answer') }}</th>
-            <th class="min-w-250px">{{ __('lang.type') }}</th>
-            <th class="min-w-150px no-export">{{ __('lang.actions') }}</th>
+            <th class="min-w-250px">{{ __('lang.supervisors') }}</th>
+            <th class="min-w-250px">{{ __('lang.date') }}</th>
+            <th class="min-w-250px">{{ __('lang.agent') }}</th>
+            <th class="min-w-150px no-export">{{ __('lang.doctor') }}</th>
         </tr>
     </thead>
     <!--end::Thead-->
     <!--begin::Tbody-->
     <tbody>
-        @foreach ($questions as $question)
+        @foreach ($visits as $visit)
             <tr>
                 <td>
-                    <span class="badge badge-light-success fs-7 fw-bold">{{ $question->question }}</span>
+                    <span class="badge badge-light-success fs-7 fw-bold">{{ $visit->user->name }}</span>
+                </td>
+                <td>
+                    <span class="badge badge-light-success fs-7 fw-bold">{{ $visit->date }}</span>
+                </td>
+                <td>
+                    <span class="badge badge-light-success fs-7 fw-bold">{{ $visit->agent->name }}</span>
+                </td>
+                <td>
+                    <span class="badge badge-light-success fs-7 fw-bold">{{ $visit->doctor->name }}</span>
                 </td>
 
-                <td>
-                    <span class="badge badge-light-success fs-7 fw-bold">{{ $question->correct_answer }}</span>
-                </td>
-                <td>
-                    <span class="badge badge-light-success fs-7 fw-bold">{{ $question->questionType->name}}</span>
-                </td>
 
                 <td>
-{{--                        <a href="{{ route('question.edit', $question->id) }}" class="btn btn-sm btn-light me-2">--}}
-{{--                            <i class="bi bi-pencil-square"></i>--}}
-{{--                        </a>--}}
-                        <form method="POST" action="{{ route('question.destroy', $question->id) }}" style="display: inline">
+                        <a href="{{ route('visits.edit', $visit->id) }}" class="btn btn-sm btn-light me-2">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <form method="POST" action="{{ route('doctor.destroy', $visit->id) }}" style="display: inline">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger me-2">
