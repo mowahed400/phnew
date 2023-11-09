@@ -1,42 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Question;
 use App\Models\QuestionType;
+use EngMahmoudElgml\Super\Response;
 use Illuminate\Http\Request;
 
 class QuestionTypesController extends Controller
 {
     public function typeQusetion(Request $request)
     {
-        try {
-            $questionTypes = QuestionType::all();
-
-            if ($questionTypes->isEmpty()) {
-                return response()->json(['message' => 'No question types found'], 404);
-            }
-
-            return response()->json(['question_types' => $questionTypes, 'message' => 'Question types retrieved successfully'], 200);
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Error occurred: ' . $e->getMessage()], 500);
-        }
+        $questionTypes = QuestionType::all();
+        return Response::defaultResponse(true,200,[],'List Of Question Types',$questionTypes);
     }
 
     public function question(Request $request)
     {
-        try {
-            $questionId = $request->input('id');
-            $questions = Question::where('type_id', $questionId)->paginate(20);
-
-            if ($questions->isEmpty()) {
-                return response()->json(['message' => 'No questions found for the given type ID'], 404);
-            }
-
-            return response()->json(['questions' => $questions, 'message' => 'Questions retrieved successfully'], 200);
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Error occurred: ' . $e->getMessage()], 500);
-        }
+        $questions = Question::where('type_id',$request['type_id'])
+            ->paginate(20);
+        return Response::defaultResponse(true,200,[],'List Of Questions',$questions);
     }
 }

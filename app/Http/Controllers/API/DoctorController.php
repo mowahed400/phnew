@@ -10,41 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class DoctorController extends Controller
 {
     public function getDoctorsByAgent(Request $request){
+        $doctors = Doctor::query()->where(function ($query)use($request){
+          if(isset($request['query']))
+          $query->where('name', 'like', '%' . $request['query'] . '%');
 
-            $agentId = $request->input('agent_id');
-
-              if (!$agentId) {
-                  return response()->json(['message' => 'Agent ID is required'], 400);
-                  }
-
-                $agent = Agent::find($agentId);
-
-              if (!$agent) {
-                  return response()->json(['message' => 'Agent not found'], 404);
-                  }
-
-                  $doctors = Doctor::where('agent_id', $agentId)->paginate(10);
-                 return response()->json(['doctors' => $doctors, 'message' => 'Doctors retrieved successfully'], 200);
-    }
-    public function searchdoctor(Request $request){
-
-        if(!Auth::check()){
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
-        $agentId=$request->input('agent_id');
-        $searchQuery = $request->input('query');
-        if(!$agentId)
-        {
-            return response()->json(['message'=>'THIS AGENT NOT FOUND'],404);
-        }
-
-
-        $doctors=Doctor::where('agent_id',$agentId)->where(function ($query)use($searchQuery){
-                    $query->where('name', 'like', '%' . $searchQuery . '%');})->paginate(10);
-        if ($doctors->isEmpty()) {
-            return response()->json(['message' => 'No matching doctros found for the user'], 404);
-        }
-        return response()->json(['agents' => $doctors, 'message' => 'Matching agents retrieved successfully'], 200);
-
+          if(isset($request['agent_id']))
+              $query->where('agent_id', $request['agent_id']);
+        })->paginate(10);
+        return response()->json(['doctors' => $doctors, 'message' => 'Doctors retrieved successfully'], 200);
     }
 }
