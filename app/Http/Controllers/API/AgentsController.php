@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
+use EngMahmoudElgml\Super\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +22,8 @@ class AgentsController extends Controller
                 if (isset($request['query']))
                 $query->where('name', 'like', '%' . $request['query'] . '%');})
             ->paginate(10);
-        if ($agents->isEmpty()) {
-            return response()->json(['message' => 'No agents found for the user'], 404);
-        }
-            return response()->json(['agents' => $agents, 'message' => 'Agents retrieved successfully'], 200);
+
+        return Response::defaultResponse(true,200,[],'Agents retrieved successfully',$agents);
     }
 
 }

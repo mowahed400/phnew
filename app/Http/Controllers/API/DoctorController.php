@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
 use App\Models\Doctor;
+use EngMahmoudElgml\Super\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,8 @@ class DoctorController extends Controller
           if(isset($request['agent_id']))
               $query->where('agent_id', $request['agent_id']);
         })->paginate(10);
-        return response()->json(['doctors' => $doctors, 'message' => 'Doctors retrieved successfully'], 200);
+
+        return Response::defaultResponse(true,200,[],'Doctors retrieved successfully',$doctors);
+
     }
 }
