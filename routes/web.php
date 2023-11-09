@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminPanel\AdminController;
 use App\Http\Controllers\AdminPanel\AgentController;
 use App\Http\Controllers\AdminPanel\AuthController;
+use App\Http\Controllers\AdminPanel\ChatController;
 use App\Http\Controllers\AdminPanel\PermessionController;
 use App\Http\Controllers\AdminPanel\QuestionController;
 use App\Http\Controllers\AdminPanel\ReportsController;
@@ -54,6 +55,8 @@ Route::group(
             Route::resource('question', QuestionController::class);
             Route::resource('visits', VisitController::class);
             Route::resource('reports', ReportsController::class);
+            Route::resource('message', ChatController::class);
+
 //            Route::get('authtype',function (){
 //                $auth=auth()->user()->name;
 //                return($auth);

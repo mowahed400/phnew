@@ -69,6 +69,7 @@ License: For each use you must have a valid license purchased only from above li
     <link href="{{asset('assets/css/custom.css')}}" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{{--    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>--}}
 
 </head>
 <!--end::Head-->
